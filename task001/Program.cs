@@ -9,14 +9,14 @@ int ReadInt(string text)
 {
     System.Console.Write(text);
     return Math.Abs(Convert.ToInt32(Console.ReadLine()));
-} 
-                //    0
+}
+
 void PrintNumbers(int N)
 {
-    if(N == 0) return;
-    System.Console.Write(N + " "); 
-    PrintNumbers(N -1);
-    
+    if (N == 0) return;
+    System.Console.Write(N + " ");
+    PrintNumbers(N - 1);
+
 }
 
 // -----------------

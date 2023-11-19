@@ -1,28 +1,34 @@
-﻿// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
-// m = 2, n = 3 -> A(m,n) = 9
-// m = 3, n = 2 -> A(m,n) = 29
+﻿// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
 
-using System;
-
-public class AkkermanFunction
+int ReadInt(string text)
 {
-    static int CalculateAkkermanFunction(int m, int n) 
-    {
-        // Base cases for m and n
-        if (m == 0 || n == 0) 
-            return (m==0) ? n+1 : (n==0) ? 2*m : 1;
-
-        // Recursive case 
-        return (CalculateAkkermanFunction(m-1, 1) +
-                CalculateAkkermanFunction(n, CalculateAkkermanFunction(m, n-1)) );
-    } 
-
-    public static void Main() 
-    { 
-        int m = int.Parse(Console.ReadLine().Trim()); 
-        int n = int.Parse(Console.ReadLine().Trim());
-        
-        Console.WriteLine("A(" + m + ", " + n + ") = " + 
-                          CalculateAkkermanFunction(m, n).ToString()); 
-     } 
+    System.Console.Write(text);
+    return Math.Abs(Convert.ToInt32(Console.ReadLine()));
 }
+
+int CountSumma(int m, int n)
+{
+    if (m > n)
+
+        return 0;
+    else
+
+        return m + CountSumma(m + 1, n);
+
+}
+
+//---------------------------------------
+int m = ReadInt("Введите число M: ");
+int n = ReadInt("Введите число N: ");
+
+if (m > n)                // проверка на большее и меньшее число
+{
+    int temp = m;
+    m = n;
+    n = temp;
+}
+
+int sum = CountSumma(m, n);
+System.Console.WriteLine(sum);
